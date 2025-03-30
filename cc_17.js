@@ -47,7 +47,6 @@ class VIPCustomer extends Customer {
 }
 
 
-
 // Task 4: Build a Client Report System
 const customer1 = new Customer("Alice Johnson", "alice@gmail.com");
 console.log(customer1); 
