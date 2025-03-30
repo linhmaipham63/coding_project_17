@@ -33,3 +33,16 @@ class SalesRep {
     }
 }
 
+
+// Task 3: Create a VIPCustomer Class (extends Customer)
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+        super(name, email);
+        this.vipLevel = vipLevel; // vipLevel (string: 'Gold', 'Platinum')
+    }
+
+    getTotalSpent() {
+        return super.getTotalSpent() * 1.1; // 10% loyalty bonus added
+    }
+}
+
