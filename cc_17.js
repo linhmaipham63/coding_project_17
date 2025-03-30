@@ -46,3 +46,36 @@ class VIPCustomer extends Customer {
     }
 }
 
+
+
+// Task 4: Build a Client Report System
+const customer1 = new Customer("Alice Johnson", "alice@gmail.com");
+console.log(customer1); 
+customer1.addPurchase(200);
+customer1.addPurchase(150);
+console.log(`${customer1.name} total spent after purchases: $${customer1.getTotalSpent()}`);
+
+const vipCustomer = new VIPCustomer("Bob Smith", "bob@gmail.com", "Gold");
+vipCustomer.addPurchase(500);
+vipCustomer.addPurchase(300);
+console.log(`${vipCustomer.name} total spent with VIP bonus: $${vipCustomer.getTotalSpent().toFixed(2)}`);
+
+const rep = new SalesRep("Charlie Brown");
+rep.addClient(customer1);
+rep.addClient(vipCustomer); 
+console.log(`Charlie's client total for ${customer1.name}: $${rep.getClientTotal("Alice Johnson")}`);
+
+const customers = [customer1, vipCustomer];
+
+// Use .reduce() to calculate total revenue from all customers
+const totalRevenue = customers.reduce((sum, customer) => sum + customer.getTotalSpent(), 0);
+
+// Use .filter() to find customers who spent over $500
+const highSpenders = customers.filter(customer => customer.getTotalSpent() > 500);
+
+// Use .map() to create an array of customer names and total spent
+const customerSummaries = customers.map(customer => ({ name: customer.name, totalSpent: customer.getTotalSpent() }));
+
+console.log(`Total revenue: $${totalRevenue}`);
+console.log(`High-spending customers:`, highSpenders.map(c => c.name));
+console.log(`Customer summaries:`, customerSummaries);
